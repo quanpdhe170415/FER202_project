@@ -28,7 +28,7 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />} /> 
           <Route path="/edit" element={<Edit />} /> 
-          <Route path="/edit2/:id" element={<Update/>} /> h
+          <Route path="/edit2/:id" element={<Update/>} /> hsưaf
         </Routes>
 
       </div>
