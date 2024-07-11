@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Header = () => {
   // const[check]
-  const { user } = useContext(UserContent);
+  const { user, setUser } = useContext(UserContent);
   // const { setUser } = useContext(UserContent);
   // <Routes>
   //       <Route path="/login" element={<Login />} />
@@ -26,7 +26,8 @@ const Header = () => {
     navigate('/register');
   }
   function logout() {
-    navigate('/:id');
+    setUser(null);
+    navigate('/');
   }
   return (
 
