@@ -29,6 +29,9 @@ const Header = () => {
     setUser(null);
     navigate('/');
   }
+  function viewProfile() {
+    navigate('/profile');
+  }
   return (
 
     <div>
@@ -52,9 +55,14 @@ const Header = () => {
                 </li>
                 <li id="sign-in">
                   {
-                    user?.role != null ? <button style={{ border: 'none' }}>user:{user?.role}: {user?.name}</button> : <button onClick={login} style={{ alignItem: "center", border: 'none', justifyContent: "center", backgroundColor: "#CBBFE6", fontWeight: "Bold", color: "#5A5566" }}>Đăng Nhập</button>
+                    user?.role ? (
+                      <button onClick={viewProfile} style={{ border: 'none' }}>
+                        user:{user?.role}: {user?.name}
+                      </button>
+                    ) : (
+                      <button onClick={login} style={{ alignItem: "center", border: 'none', justifyContent: "center", backgroundColor: "#CBBFE6", fontWeight: "Bold", color: "#5A5566" }}>Đăng Nhập</button>
+                    )
                   }
-
                 </li>
                 <li id="sign-up">
                   {
