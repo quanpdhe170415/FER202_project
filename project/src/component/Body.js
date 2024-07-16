@@ -47,8 +47,7 @@ const Body = () => {
   }, [searchValue, Listmovie, id]);
 
   // Handle movie deletion
-  function deleteMovie(event) {
-    let id = event.target.value;
+  const deleteMovie = (id) => {
     if (window.confirm("Are you sure you want to delete this movie?")) {
       fetch(`http://localhost:9999/movies/${id}`, {
         method: "DELETE",
@@ -63,13 +62,12 @@ const Body = () => {
           console.error("Error deleting movie:", error);
         });
     }
-  }
+  };
 
   // Navigate to movie update page
-  function update(event) {
-    let id = event.target.value;
+  const update = (id) => {
     navigate(`/edit2/${id}`);
-  }
+  };
 
   // Slider settings
   const sliderSettings = {
@@ -107,13 +105,13 @@ const Body = () => {
       </div>
 
       <div className="col-md-9">
-        <Slider {...sliderSettings}>
+        {/* <Slider {...sliderSettings}>
           {Listmovie.map((movie) => (
             <div key={movie.id}>
               <img src={movie.image} alt={movie.name} />
             </div>
           ))}
-        </Slider>
+        </Slider> */}
 
         <Box className="search" style={{ marginBottom: "2rem" }}>
           <Stack direction="row" spacing={1}>
@@ -166,16 +164,14 @@ const Body = () => {
                       <Button
                         size="small"
                         variant="contained"
-                        onClick={update}
-                        value={movie.id}
+                        onClick={() => update(movie.id)}
                       >
                         Update
                       </Button>
                       <Button
                         size="small"
                         variant="contained"
-                        onClick={deleteMovie}
-                        value={movie.id}
+                        onClick={() => deleteMovie(movie.id)}
                       >
                         Delete
                       </Button>
